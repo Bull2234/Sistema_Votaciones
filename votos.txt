@@ -1,0 +1,242 @@
+CREATE TABLE departamento(
+	cod_depto Varchar(5) PRIMARY KEY,
+	depto Varchar(100)
+	);
+
+CREATE TABLE municipio(
+	cod_mcpio Varchar(5) PRIMARY KEY,
+	mcpio Varchar(100),
+	cod_depto Varchar(5),
+	FOREIGN KEY (cod_depto) REFERENCES departamento(cod_depto)
+	);
+
+
+CREATE TABLE ciudadanos (
+	identificacion VARCHAR(10) PRIMARY KEY,
+    	nombres VARCHAR(100),
+   	apellidos VARCHAR(100),
+	correo VARCHAR(150) NOT NULL,
+	sexo CHAR(1),
+   	edad INT,
+	cod_depto Varchar(5),
+    	cod_mcpio Varchar(5),
+    	FOREIGN KEY (cod_depto) REFERENCES departamento(cod_depto),
+    	FOREIGN KEY (cod_mcpio) REFERENCES municipio(cod_mcpio)
+   	 );
+
+CREATE TABLE administrador (
+	nombre varchar(100),
+	identificacion varchar(10) PRIMARY KEY,
+	correo varchar(100),
+	pasword varchar(10)
+	);
+
+CREATE TABLE tipo_votacion (
+	cod_votacion varchar(5) PRIMARY KEY,
+	tipo_votacion varchar(100)
+	);
+
+CREATE TABLE tipo_eleccion (
+    id_votacion SERIAL PRIMARY KEY,
+    tipovotacion VARCHAR(5),
+    id_admin VARCHAR(10),
+    tipo VARCHAR(50),
+    estado VARCHAR(20),
+    fecha_inicio DATE,
+    fecha_final DATE,
+    FOREIGN KEY (id_admin) REFERENCES administrador(identificacion),
+    FOREIGN KEY (tipovotacion) REFERENCES tipo_votacion(cod_votacion)
+);
+
+
+CREATE TABLE partido(
+	id_partido SERIAL,
+	codpartido varchar(5) PRIMARY KEY,
+	nompartido varchar(100)
+	);
+
+CREATE TABLE candidatos (
+	cod_candidato varchar(5)PRIMARY KEY,
+	identificacion varchar(10),
+	foto MEDIUMBLOB,
+	codpartido varchar(5),
+	tipovotacion varchar(5),
+	FOREIGN KEY (codpartido) REFERENCES partido(codpartido),
+	FOREIGN KEY (identificacion) REFERENCES ciudadanos(identificacion),
+	FOREIGN KEY (tipovotacion) REFERENCES tipo_votacion(cod_votacion)
+	);
+
+
+CREATE TABLE votos(
+	id_votos Serial PRIMARY KEY,
+	id_votante varchar(10),
+	id_candidato varchar(5),
+	voto varchar(2),
+	FOREIGN KEY (id_votante) REFERENCES ciudadanos (identificacion),
+	FOREIGN KEY (id_candidato) REFERENCES candidatos(cod_candidato)
+	);
+    
+    -- creamos una vista para mostrar los votos y datos de cada candidato
+CREATE VIEW consulta_total_votos AS
+ SELECT 
+ 	count(*) as total_votos,
+ 	votos.voto,
+	tipo_votacion.tipo_votacion,
+	departamento.depto,
+	municipio.mcpio,
+	candidatos.codpartido,
+    votos.id_candidato,
+    candidatos.identificacion,
+	ciudadanos.nombres,
+	ciudadanos.apellidos
+   	FROM votos
+     	JOIN candidatos ON votos.id_candidato = candidatos.cod_candidato
+		JOIN ciudadanos ON candidatos.identificacion = ciudadanos.identificacion
+		JOIN tipo_votacion ON tipo_votacion.cod_votacion = candidatos.tipovotacion
+		JOIN departamento ON departamento.cod_depto = ciudadanos.cod_depto
+		JOIN municipio ON municipio.cod_mcpio = ciudadanos.cod_mcpio
+		where votos.voto = 'SI'
+		GROUP BY 2,3,4,5,6,7,8,9,10
+		ORDER BY total_votos DESC;
+
+-- Insertar datos en la tabla departamentos
+INSERT INTO departamento (cod_depto, depto) VALUES 
+    ('05', 'Antioquia'),
+    ('08', 'Atlántico'),
+    ('11', 'Bogotá D.C.'),
+    ('13', 'Bolívar'),
+    ('15', 'Boyacá'),
+    ('17', 'Caldas'),
+    ('18', 'Caquetá'),
+    ('19', 'Cauca'),
+    ('20', 'Cesar'),
+    ('23', 'Córdoba'),
+    ('25', 'Cundinamarca'),
+    ('27', 'Chocó'),
+    ('41', 'Huila'),
+    ('44', 'La Guajira'),
+    ('47', 'Magdalena'),
+    ('50', 'Meta'),
+    ('52', 'Nariño'),
+    ('54', 'Norte de Santander'),
+    ('63', 'Quindío'),
+    ('66', 'Risaralda');
+
+-- Insertar datos en la tabla municipios
+INSERT INTO municipio (cod_mcpio, mcpio, cod_depto) VALUES
+    ('0011', 'Medellín', '05'),
+    ('0012', 'Abejorral', '05'),
+    ('0013', 'Barranquilla', '08'),
+    ('0014', 'Baranoa', '08'),
+    ('0015', 'Bogotá', '11'),
+    ('0016', 'Cartagena', '13'),
+    ('0017', 'Tunja', '15'),
+    ('0018', 'Duitama', '15'),
+    ('0019', 'Manizales', '17'),
+    ('0020', 'Villamaría', '17'),
+    ('0021', 'Florencia', '18'),
+    ('0022', 'Belén de los Andaquíes', '18'),
+    ('0023', 'Popayán', '19'),
+    ('0024', 'Timbío', '19'),
+    ('0025', 'Valledupar', '20'),
+    ('0026', 'Aguachica', '20'),
+    ('0027', 'Montería', '23'),
+    ('0028', 'Lorica', '23'),
+    ('0029', 'Bogotá', '25'),
+    ('0030', 'La Vega', '25'),
+    ('001', 'Pasto', '52'),
+    ('002', 'Ipiales', '52'),
+    ('003', 'Tumaco', '52'),
+    ('004', 'Túquerres', '52'),
+    ('005', 'Samaniego', '52'),
+    ('006', 'La Unión', '52'),
+    ('007', 'Barbacoas', '52'),
+    ('008', 'Santacruz', '52'),
+    ('009', 'Gualmatán', '52'),
+    ('010', 'Cumbal', '52');
+
+-- Insertar datos en la tabla ciudadanos
+INSERT INTO ciudadanos (identificacion, nombres, apellidos, correo, sexo, edad, cod_depto, cod_mcpio)
+VALUES
+    ('1234567890', 'Juan', 'Pérez', 'juan@gmail.com', 'M', 30, '52', '001'),
+    ('2345678901', 'María', 'López', 'maria@hotmail.com', 'F', 25, '52', '002'),
+    ('3456789012', 'Carlos', 'González', 'carlos@gmail.com', 'M', 40, '52', '003'),
+    ('4567890123', 'Ana', 'Martínez', 'ana@hotmail.com', 'F', 28, '52', '004'),
+    ('5678901234', 'Luis', 'Rodríguez', 'luis@gmail.com', 'M', 22, '52', '005'),
+    ('6789012345', 'Laura', 'Sánchez', 'laura@hotmail.com', 'F', 35, '52', '006'),
+    ('7890123456', 'Pedro', 'Ramírez', 'pedro@gmail.com', 'M', 45, '52', '007'),
+    ('8901234567', 'Elena', 'Gómez', 'elena@hotmail.com', 'F', 31, '52', '008'),
+    ('9012345678', 'Miguel', 'Hernández', 'miguel@gmail.com', 'M', 29, '52', '009'),
+    ('0123456789', 'Isabel', 'Díaz', 'isabel@hotmail.com', 'F', 27, '52', '010'),
+    ('1111111111', 'David', 'García', 'david@gmail.com', 'M', 32, '52', '001'),
+    ('2222222222', 'Valentina', 'Ortega', 'valentina@hotmail.com', 'F', 29, '52', '002'),
+    ('3333333333', 'Javier', 'Silva', 'javier@gmail.com', 'M', 38, '52', '003'),
+    ('4444444444', 'Camila', 'Herrera', 'camila@hotmail.com', 'F', 20, '52', '004'),
+    ('5555555555', 'Andrés', 'López', 'andres@gmail.com', 'M', 26, '52', '005'),
+    ('6666666666', 'Sofía', 'Martínez', 'sofia@hotmail.com', 'F', 21, '52', '006'),
+    ('7777777777', 'Gabriel', 'Ramírez', 'gabriel@gmail.com', 'M', 42, '52', '007'),
+    ('8888888888', 'Lucía', 'Gómez', 'lucia@hotmail.com', 'F', 33, '52', '008'),
+    ('9999999999', 'Felipe', 'Hernández', 'felipe@gmail.com', 'M', 24, '52', '009'),
+    ('1010101010', 'Marcela', 'Díaz', 'marcela@hotmail.com', 'F', 30, '52', '010'),
+    ('1212121212', 'Gonzalo', 'Pérez', 'gonzalo@gmail.com', 'M', 37, '52', '001'),
+    ('1313131313', 'Daniela', 'López', 'daniela@hotmail.com', 'F', 28, '52', '002'),
+    ('1414141414', 'Matías', 'García', 'matias@gmail.com', 'M', 45, '52', '003'),
+    ('1515151515', 'Renata', 'Ortega', 'renata@hotmail.com', 'F', 23, '52', '004'),
+    ('1616161616', 'Alejandro', 'Silva', 'alejandro@gmail.com', 'M', 31, '52', '005'),
+    ('1717171717', 'Catalina', 'Herrera', 'catalina@hotmail.com', 'F', 27, '52', '006'),
+    ('1818181818', 'Diego', 'López', 'diego@gmail.com', 'M', 34, '52', '007'),
+    ('1919191919', 'Valeria', 'Martínez', 'valeria@hotmail.com', 'F', 22, '52', '008'),
+    ('2020202020', 'Emilio', 'Ramírez', 'emilio@gmail.com', 'M', 39, '52', '009'),
+    ('2121212121', 'Carolina', 'Gómez', 'carolina@hotmail.com', 'F', 25, '52', '010');
+
+-- Insertar datos en la tabla administrador
+INSERT INTO administrador (nombre, identificacion, correo, pasword) VALUES 		
+	('Ana', '1000724100', 'ana@gmail.com', 'ana4321'), 
+	('jose', '1000724101', 'jose@hotmal.com', 'secreto789'), 
+	('luis', '1000724102', 'luis@gmail.com', 'clave012');
+
+-- Insertar datos en la tabla tipo_votacion
+INSERT INTO tipo_votacion (cod_votacion, tipo_votacion) VALUES
+	('100', 'Elección Municipal'),
+	('101', 'Elección Departamental');
+
+-- Insertar datos en la tabla tipo_eleccion
+INSERT INTO tipo_eleccion (tipovotacion, id_admin, tipo, estado, fecha_inicio, fecha_final)VALUES
+    ('100', '1000724101', 'Elección Municipal', 'Activa', '2023-05-01', '2023-05-10'),
+    ('101', '1000724102', 'Elección Departamental', 'Cerrada', '2023-07-01', '2023-07-05');
+
+-- Insertar datos en la tabla partido
+INSERT INTO partido (codpartido, nompartido) VALUES
+    ('C3', 'Partido Conservador'),
+    ('L4', 'Partido Liberal'),
+    ('U5', 'Partido la U');
+
+-- Insertar datos en la tabla candidatos
+INSERT INTO candidatos (cod_candidato, identificacion, foto, codpartido, tipovotacion)
+VALUES
+    ('1000', '2121212121', NULL, 'C3', '100'),
+    ('1001', '2020202020', NULL, 'C3', '100'),
+    ('1002', '1919191919', NULL, 'L4', '100'),
+    ('2001', '1616161616', NULL, 'U5', '101'),
+    ('2002', '1717171717', NULL, 'U5', '101'),
+    ('2003', '1818181818', NULL, 'U5', '101');
+
+-- Insertar datos en la tabla votos
+INSERT INTO votos (id_votante, id_candidato, voto) VALUES
+        ('1234567890', '1001', 'SI'),
+        ('2345678901', '1000', 'SI'),
+        ('3456789012', '1002', 'SI'),
+	('0123456789', '1000', 'SI'),
+	('9012345678', '1000', 'SI'),
+	('8901234567', '1002', 'SI'),
+	('7890123456', '1002', 'SI'),
+	('6789012345', '1002', 'SI'),
+	('6789012345', '1001', 'SI'),
+	('5678901234', '1002', 'SI'),
+	('4567890123', '1001', 'SI');
+
+
+
+
+
+

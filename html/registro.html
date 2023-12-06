@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/registro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>eDemocracia</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form-content">
+            <h1 id="title">Registro</h1>
+            <form action="../php/registro_admin.php" id="formulario" method="post">
+                <div class="input-group">
+                    <div class="input-field" id="nombre-input">
+                        <i class="fa-solid fa-signature"></i>
+                        <input type="ntext" placeholder="Nombre" name="nombre" minlength="4" maxlength="30" required>
+                    </div>
+                    <div class="input-field" id="cedula-input">
+                        <i class="fa-solid fa-address-card"></i>
+                        <input type="text" placeholder="Número de identificación" name="identificacion" id="identificacion" pattern="[0-9]{7,10}" maxlength="10" required >
+                    </div>
+                    <div class="input-field" id="correo-input">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" placeholder="Correo" name="correo" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="Contraseña" name="passwordd" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$" id="contra1" required >
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="Repita la contraseña" name="passwordd2" id="contra2" required >
+                    </div>
+                    <p>¿Ya tienes una cuenta? <a href="../html/login.php">incia sesión aqui</a></p>
+                </div>
+                <div class="btn-field">
+                    <button type="submit" id="singIn" >Registrar</button>
+
+                </div>
+                
+            </form>
+        </div>
+   </div>
+   
+    <script src="../js/validarformulario.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

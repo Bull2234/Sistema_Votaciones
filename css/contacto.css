@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* se indica el uso de Popins, un tipo de letra importada desde google fonts por el método link*/
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: #656565;
+    font-size: 1.1rem;
+}
+
+/* estilos para header */
+header{
+    position: relative;
+    padding: 0 2rem;
+}
+
+
+
+.navbar{
+    width: 100%;
+    height: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .links {
+    display: flex;
+    gap: 2rem;
+}
+
+.action_login {
+    background-color: #0C8CE9;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.action_login:hover{
+    scale: 1.05;
+    color: #fff;
+}
+
+.action_home {
+    background-color: #7EE687;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+
+.action_home:hover{
+    scale: 1.05;
+    color: #fff;
+}
+
+
+h1{
+    font-weight: bolder;
+    color:  #fff;
+    font-size: 40px;
+    justify-content: center;
+    align-items: center;
+}
+h2 {
+    color:  #000;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+p {
+    color: #fff;
+    font-size: 34px;
+    max-width: 74%;
+    padding: 10px;
+    text-align: justify;
+}
+
+
+.responsive {
+    font-size: 2rem; /* Tamaño inicial del texto */
+    max-width: 80%; /* Ancho máximo para evitar que el texto se vuelva demasiado ancho */
+    text-align: center; /* Centrar el texto en el div */
+    max-height: 80%;
+    justify-content: left;
+  }
+
+
+
+a:hover{
+    color: #000;
+}
+
+.cuerpo{
+    color: #000;
+    font-size: 20px;
+}
+  
+
+.main_right{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 50%;
+    float: right;
+    height: 90vh;
+    
+}
+.main_left{
+    width: 50%;
+    float: left;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+}
+
+.mainimg{
+    max-width: 60%; /* Ancho máximo para que la imagen se ajuste dentro del div */
+    height: auto; /* Altura automática para mantener la proporción de la imagen */
+  
+}
+  
+  
+  
