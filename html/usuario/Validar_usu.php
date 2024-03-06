@@ -3,7 +3,8 @@ include("C:/xampp/htdocs/xampp/eDemocracia_src/php/conexion_be.php");
 
 boton($conexion);
 
-function validar($conexion) {
+function validar($conexion)
+{
     if (isset($_POST['id'])) {
         $id = $_POST['id'];
 
@@ -58,11 +59,11 @@ function validar($conexion) {
     }
 }
 
-function boton($conexion) {
+function boton($conexion)
+{
     if (isset($_POST['ingresar'])) {
         validar($conexion);
     } else {
         header("Location: login_votante.html");
     }
 }
-?>

@@ -1,0 +1,16 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: grey;
+}
+
+.login-container {
+    width: 400px;
+    padding: 20px;
+    border: 1px solid #d6d6d6;
+    border-radius: 5px;
+    background-color: #CCFFFF;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}

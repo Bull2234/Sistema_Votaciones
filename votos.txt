@@ -58,7 +58,7 @@ CREATE TABLE partido(
 CREATE TABLE candidatos (
 	cod_candidato varchar(5)PRIMARY KEY,
 	identificacion varchar(10),
-	foto MEDIUMBLOB,
+	foto varchar(255),
 	codpartido varchar(5),
 	tipovotacion varchar(5),
 	FOREIGN KEY (codpartido) REFERENCES partido(codpartido),
@@ -214,12 +214,12 @@ INSERT INTO partido (codpartido, nompartido) VALUES
 -- Insertar datos en la tabla candidatos
 INSERT INTO candidatos (cod_candidato, identificacion, foto, codpartido, tipovotacion)
 VALUES
-    ('1000', '2121212121', NULL, 'C3', '100'),
-    ('1001', '2020202020', NULL, 'C3', '100'),
-    ('1002', '1919191919', NULL, 'L4', '100'),
-    ('2001', '1616161616', NULL, 'U5', '101'),
-    ('2002', '1717171717', NULL, 'U5', '101'),
-    ('2003', '1818181818', NULL, 'U5', '101');
+    ('1001', '2020202020', '1001', 'C3', '100'),
+    ('1002', '1919191919', '1002', 'L4', '100'),
+    ('2001', '1616161616', '2001', 'U5', '101'),
+    ('2002', '1717171717', '2002', 'U5', '101'),
+    ('2003', '1818181818', '2003', 'U5', '101'),
+    ('1000', '2121212121', '1000', 'C3', '100');
 
 -- Insertar datos en la tabla votos
 INSERT INTO votos (id_votante, id_candidato, voto) VALUES

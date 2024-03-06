@@ -5,26 +5,8 @@
     <title>Formulario de Votación</title>
     <!-- Enlace a Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: grey;
-        }
-
-        .login-container {
-            width: 400px;
-            padding: 20px;
-            border: 1px solid #d6d6d6;
-            border-radius: 5px;
-            background-color: #CCFFFF;
-            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/datos_votacion.css">
 </head>
-
 <body>
 
     <div class="login-container">

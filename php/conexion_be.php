@@ -1,5 +1,5 @@
 <?php 
-    $conexion = mysqli_connect("localhost","root","","votaciones");
+    $conexion = mysqli_connect("localhost","root","","votaciones-db");
     /*
     if($conexion){
         echo 'conexión creada [a]';

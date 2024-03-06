@@ -15,27 +15,8 @@ $sql = $conexion->query("SELECT  `tipo`, `tipovotacion`,  `fecha_inicio`, `fecha
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #fff;
-            font-family: 'Poppins', sans-serif;
-            /* se indica el uso de Popins, un tipo de letra importada desde google fonts por el método link*/
-        }
-
-        .login-container {
-            width: 400px;
-            padding: 20px;
-            border: 1px solid #d6d6d6;
-            border-radius: 5px;
-            background-color: #0C8CE9;
-            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-        }
-    </style>
-    <title>virgen maria</title>
+    <link rel="stylesheet" href="../../css/actualizar.css">
+    <title>Actualizar Datos</title>
 </head>
 
 <body>

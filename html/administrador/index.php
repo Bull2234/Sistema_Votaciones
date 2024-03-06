@@ -24,7 +24,6 @@ if (!isset($_SESSION['usuario'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <!-- Favicon - FIS -->
-
     <title>ADMIN-Encuestas</title>
 
 </head>
@@ -47,7 +46,7 @@ if (!isset($_SESSION['usuario'])) {
             <div class="col-md-12 row">
                 <div class="col-md-10 col-xs-12">
                     <h3>TIPO DE VOTACIÒN</h3>
-                    <a href="../../php/cerrar_sesion.php">cerrar sesión</a>
+                    <a href="../../php/cerrar_sesion.php" class="btn btn-info">cerrar sesión</a>
                 </div>
                 <div class="col-md-2 col-xs-12">
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -97,34 +96,6 @@ if (!isset($_SESSION['usuario'])) {
                 </tbody>
             </table>
         </div>
-
+        <script src="../../js/index.js"></script>
 </body>
-<script>
-    function mostrarcandidatos(tipo) {
-        event.preventDefault();
-        console.log('Button clicked, tipo:', tipo);
-        window.location.href = "mostrar_candidato.php?tipo=" + tipo;
-
-    }
-
-    function eliminarFila(id) {
-        if (confirm("¿Estás seguro de que deseas eliminar esta fila?")) {
-            window.location.href = "eliminar.php?id=" + id; // Redirecciona a eliminar.php con el ID
-        }
-    }
-
-    function actualizarFila(id) {
-        if (confirm("¿Estás seguro de que deseas actualizar esta fila?")) {
-            window.location.href = "actualizar.php?id=" + id;
-        }
-    }
-
-    function Publicar(id) {
-        console.log(id); // Agrega esta línea para depurar
-        if (confirm("¿Estás seguro de que deseas publicar esta votación?")) {
-            window.location.href = "publicar.php?id=" + id; // Redirecciona a publicar.php con el ID
-        }
-    }
-</script>
-
 </html>
