@@ -1,5 +1,6 @@
 <?php
 $inc = include('../../php/conexion_be.php');
+
 if ($inc) {
     $sql = "SELECT * FROM `tipo_eleccion` WHERE estado = 'Activa'";
     $resultado = mysqli_query($conexion, $sql);

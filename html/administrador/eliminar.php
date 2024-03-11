@@ -1,5 +1,5 @@
 <?php
-include("C:/xampp/htdocs/xampp/eDemocracia_src/php/conexion_be.php");
+include("../eDemocracia_src/php/conexion_be.php");
 $id = $_GET['id'];
 $sql = "DELETE FROM tipo_eleccion WHERE id_votacion = '$id'";
 if (mysqli_query($conexion, $sql)) {

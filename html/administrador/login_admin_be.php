@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include("C:/xampp/htdocs/xampp/eDemocracia_src/php/conexion_be.php");
+    include("../eDemocracia_src/php/conexion_be.php");
     $identificacion = $_POST['identificacion'];
     $contrasena = $_POST['passwordd'];
 

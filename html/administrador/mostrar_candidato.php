@@ -58,8 +58,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    include("C:/xampp/htdocs/xampp/eDemocracia_src/php/conexion_be.php");
-
+                    include("../eDemocracia_src/php/conexion_be.php");
                     // Obtener el valor 'tipo' desde la URL
                     $nom = $_GET['tipo'];
 

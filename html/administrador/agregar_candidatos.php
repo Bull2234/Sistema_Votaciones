@@ -31,7 +31,7 @@
                 <form action="mostrar_candidato.php" method="GET">
                     <select class="form-select" name="seleccion">
                         <?php
-                        include("C:/xampp/htdocs/xampp/eDemocracia_src/php/conexion_be.php");
+                        include("../eDemocracia_src/php/conexion_be.php");
 
                         // Consultar la base de datos para obtener las identificaciones
                         $sql = "SELECT identificacion FROM `candidatos`";

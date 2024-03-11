@@ -21,7 +21,7 @@
     
     }
     body{
-        
+        background-color: aqua;
     }
     .container{
     width: 100%;

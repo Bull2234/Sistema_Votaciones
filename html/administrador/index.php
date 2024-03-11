@@ -71,7 +71,7 @@ if (!isset($_SESSION['usuario'])) {
                 </thead>
                 <tbody>
                     <?php
-                    include("C:/xampp/htdocs/xampp/eDemocracia_src/php/conexion_be.php");
+                    include("../eDemocracia_src/php/conexion_be.php");
 
                     // Consultar la base de datos para validar el ID
                     $sql = "SELECT * FROM tipo_eleccion";

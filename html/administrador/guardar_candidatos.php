@@ -1,6 +1,5 @@
 <?php
-include("C:/xampp/htdocs/xampp/eDemocracia_src/php/conexion_be.php");
-
+include("../eDemocracia_src/php/conexion_be.php");
 boton($conexion);
 
 
@@ -9,16 +8,17 @@ function insertar($conexion){
 	$id = $_POST['identificacion'];
 	$nom = $_POST['ide'];
     $cod = $_POST['codpartido'];
-    $tipo = $_POST['tipovotacion'];
-	$imagen = 'sin foto';
+    $tipo_votacion = $_POST['tipovotacion'];
+	$imagen = '';
 	if(isset($_FILES['foto'])){
 		// Guardar la foto en el servidor y obtener su nombre temporal
         $file = $_FILES["foto"];
+		$tipo = $file["type"]; // Obtener el tipo MIME del archivo
 		$nombre = $file["name"];
 		$ruta_provisional = $file["tmp_name"];
 		$carpeta = "Fotos/"; // Carpeta en donde guardaremos	 las imágenes
 		if($tipo != 'image/jpg' && $tipo != 'image/JPG' && $tipo != 'image/jpeg' && $tipo != 'image/png' && $tipo != 'image/gif'){
-			echo "<script>alert('Error al caegar la foto');</script>";
+			echo "<script>alert('Error al cargar la foto');</script>";
 		}else{
 			$src = $carpeta.$nombre; 
 			move_uploaded_file($ruta_provisional, $src);
@@ -28,7 +28,7 @@ function insertar($conexion){
 
 	// Insertar los datos en la base de datos
   $sql = "INSERT INTO candidatos (cod_candidato, identificacion, foto, codpartido, tipovotacion) VALUES
-                             ('$id', '$nom', '$imagen', '$cod', '$tipo')";
+                             ('$id', '$nom', '$imagen', '$cod', '$tipo_votacion')";
 
 	mysqli_query($conexion, $sql);
 	mysqli_close($conexion);
