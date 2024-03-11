@@ -30,7 +30,7 @@
           <div class="col-md-2">
             <label for="id_candidato" class="form-label">Codigo Candidato</label>
             <?php
-            include("../eDemocracia_src/php/conexion_be.php");
+            include("../../php/conexion_be.php");
             if (isset($_GET['id'])) {
               // Recupera el valor de 'id' de la URL y asigna a la variable $idvo
               $tipoVotacion = $_GET['id'];
@@ -60,7 +60,7 @@
             <select class="form-select" id="nombre_candidato">
 
               <?php
-              include("../eDemocracia_src/php/conexion_be.php");
+              include("../../php/conexion_be.php");
               $sql = "SELECT c.nombres, c.apellidos
                                     FROM ciudadanos c
                                     INNER JOIN candidatos ca ON c.identificacion = ca.identificacion where tipovotacion = $tipoVotacion";

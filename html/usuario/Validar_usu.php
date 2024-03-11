@@ -1,5 +1,5 @@
 <?php
-include("../eDemocracia_src/php/conexion_be.php");
+include("../../php/conexion_be.php");
 boton($conexion);
 
 function validar($conexion)

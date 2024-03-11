@@ -1,5 +1,5 @@
 <?php
-include("../eDemocracia_src/php/conexion_be.php");
+include("../../php/conexion_be.php");
 $id_votacion = $_GET['id_votacion'];
 $sql = $conexion->query("SELECT  `tipo`, `tipovotacion`,  `fecha_inicio`, `fecha_final` FROM `tipo_eleccion` WHERE id_votacion =$id_votacion");
 ?>

@@ -15,7 +15,7 @@
             <div class="mb-3">
                 <label for="idvot" class="form-label">Codigo Votacion</label>
                 <?php
-                include("../eDemocracia_src/php/conexion_be.php");                $sql = "SELECT cod_votacion FROM tipo_votacion";
+                include("../../php/conexion_be.php");                $sql = "SELECT cod_votacion FROM tipo_votacion";
                 $resultado = mysqli_query($conexion, $sql);
                 ?>
                 <select class='form-select' id='idvot' name='idvot'>
@@ -35,7 +35,7 @@
             <div class="mb-3">
                 <label for="titulo" class="form-label">Tipo Votacion</label>
                 <?php
-                include("../eDemocracia_src/php/conexion_be.php");                $sql = "SELECT tipo_votacion FROM tipo_votacion";
+                include("../../php/conexion_be.php");                $sql = "SELECT tipo_votacion FROM tipo_votacion";
                 $resultado = mysqli_query($conexion, $sql);
                 ?>
                 <select class='form-select' id='titulo' name='titulo'>

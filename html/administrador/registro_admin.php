@@ -1,6 +1,6 @@
 <?php
 
-include("../eDemocracia_src/php/conexion_be.php");
+include("../../php/conexion_be.php");
 $nombre_completo = $_POST['nombre'];
 $identificacion = $_POST['identificacion'];
 $correo = $_POST['correo'];

@@ -59,7 +59,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    include("../eDemocracia_src/php/conexion_be.php");
+                    include("../../php/conexion_be.php");
 
 
                     // Consultar la base de datos para validar el ID
