@@ -29,64 +29,39 @@
           </div>
           <div class="col-md-2">
             <label for="id_candidato" class="form-label">Codigo Candidato</label>
-            <?php
-            include("../../php/conexion_be.php");
-            if (isset($_GET['id'])) {
-              // Recupera el valor de 'id' de la URL y asigna a la variable $idvo
-              $tipoVotacion = $_GET['id'];
-
-              // Ahora puedes usar $idvo en tu lógica de PHP
-            } else {
-              // Si 'id' no está presente en la URL, maneja el caso de manera apropiada
-              echo "No se proporcionó un ID de votación.";
-            }
-
-            $sql = "SELECT cod_candidato FROM candidatos where tipovotacion = $tipoVotacion";
-            $resultado = mysqli_query($conexion, $sql);
-            ?>
-            <select class="form-select" id="id_candidato" name="id_candidato">
+            <select class="form-select" id="id_candidato" name="id_candidato" onchange="codcandidato()">
               <?php
+              include("../../php/conexion_be.php");
+              if (isset($_GET['id'])) {
+                $tipoVotacion = $_GET['id'];
+              } else {
+                echo "No se proporcionó un ID de votación.";
+              }
+
+              $sql = "SELECT cod_candidato FROM candidatos where tipovotacion = $tipoVotacion";
+              $resultado = mysqli_query($conexion, $sql);
+
               // Mostrar las opciones en el menú desplegable
               while ($fila = mysqli_fetch_assoc($resultado)) {
                 echo "<option value='" . $fila['cod_candidato'] . "'>" . $fila['cod_candidato'] . "</option>";
               }
 
               mysqli_close($conexion);
+
+
               ?>
             </select>
           </div>
           <div class="col-md-3">
             <label for="nombre_candidato" class="form-label">Nombre Candidato</label>
-            <select class="form-select" id="nombre_candidato">
-
-              <?php
-              include("../../php/conexion_be.php");
-              $sql = "SELECT c.nombres, c.apellidos
-                                    FROM ciudadanos c
-                                    INNER JOIN candidatos ca ON c.identificacion = ca.identificacion where tipovotacion = $tipoVotacion";
-
-              $resultado = mysqli_query($conexion, $sql);
-
-              // Mostrar las opciones en el menú desplegable
-              while ($fila = mysqli_fetch_assoc($resultado)) {
-                $nombreCompleto = $fila['nombres'] . " " . $fila['apellidos'];
-                echo "<option value='nombre_candidato'>" . $nombreCompleto . "</option>";
-              }
-
-              mysqli_close($conexion);
-              ?>
-            </select>
+            <input type="text" class="form-control" id="nombre_candidato" readonly>
           </div>
 
           <div class="col-md-3">
-            <label for="nombre_candidato" class="form-label">Foto Candidato</label>
-            <img
-                id="profile-img"
-                class="img-card"
-                src="../../media/login.png"
-                alt="Login Image" />
+            <label for="foto_candidato" class="form-label">Foto Candidato</label>
+            <div id="foto_candidato"></div>
           </div>
-          
+
           <div class="col-md-1">
             <label for="voto" class="form-label">Voto</label>
             <div class="form-check">
@@ -99,14 +74,47 @@
 
           <div class="col-md-1">
             <label for="votar" class="form-label">Opción</label>
-            <button type="submit" class="btn btn-warning" name="enviar" btn btn-primary btn-block" onclick="return verificarCheckbox();">Votar</button>
+            <button type="submit" class="btn btn-warning" name="enviar" onclick="return verificarCheckbox();">Votar</button>
           </div>
         </form>
       </div>
     </div>
   </div>
   <!-- Botón para agregar candidatos -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../../js/verificar_checkbox.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    function codcandidato() {
+      let cod = document.getElementById('id_candidato').value;
+
+      // Hacer una petición AJAX a PHP
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          // La petición ha sido completada y la respuesta está lista
+          // Aquí puedes manejar la respuesta del servidor
+          document.getElementById("nombre_candidato").value = this.responseText;
+        }
+      };
+      xhttp.open("GET", "Nombrescan.php?cod=" + cod, true);
+      xhttp.send();
+
+      // Hacer una petición AJAX para fotoscan.php
+      var xhttp2 = new XMLHttpRequest();
+      xhttp2.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          // Manejar la respuesta de fotoscan.php
+          var fotoUrl = this.responseText;
+          document.getElementById("foto_candidato").innerHTML = "<img src='" + fotoUrl +
+            "' alt='Foto del candidato' style='width: 120px; height: 150px;'>";
+        }
+      };
+      xhttp2.open("GET", "fotoscan.php?cod=" + cod, true);
+      xhttp2.send();
+    }
+  </script>
 </body>
 
 </html>

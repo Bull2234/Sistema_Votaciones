@@ -1,8 +1,5 @@
 <?php
 include("../../php/conexion_be.php");
-boton($conexion);
-
-
 function insertar($conexion)
 {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -12,7 +9,7 @@ function insertar($conexion)
 
         $voto = "No"; // Valor predeterminado
         if (isset($_POST["voto"]) && $_POST["voto"] === "si") {
-            $voto = "Sí";
+            $voto = "SI";
         }
 
         // Insertar los datos en la base de datos
@@ -27,9 +24,6 @@ function insertar($conexion)
     }
 }
 
-
-
-
 function boton($conexion)
 {
     ////obtener la validacion del botons
@@ -39,3 +33,7 @@ function boton($conexion)
         header("Location: votar.php");
     }
 }
+
+
+// Llamar a la función boton() después de su definición
+boton($conexion);

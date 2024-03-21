@@ -87,6 +87,7 @@ CREATE VIEW consulta_total_votos AS
 	candidatos.codpartido,
     votos.id_candidato,
     candidatos.identificacion,
+    candidatos.foto,
 	ciudadanos.nombres,
 	ciudadanos.apellidos
    	FROM votos

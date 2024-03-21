@@ -55,6 +55,7 @@
                         <th>Idetificacion</th>
                         <th>Nombres</th>
                         <th>Apellidos</th>
+                        <th>Foto</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,6 +81,7 @@
                         echo "<td>" . $fila['identificacion'] . "</td>";
                         echo "<td>" . $fila['nombres'] . "</td>";
                         echo "<td>" . $fila['apellidos'] . "</td>";
+                        echo "<td><img src='" . $fila['foto'] . "' width='130px' height='150px'></td>";
                         echo "</tr>";
                     }
                     mysqli_close($conexion);

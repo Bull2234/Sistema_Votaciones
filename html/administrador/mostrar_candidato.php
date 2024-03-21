@@ -5,7 +5,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
@@ -62,8 +64,19 @@
                     // Obtener el valor 'tipo' desde la URL
                     $nom = $_GET['tipo'];
 
-                    // Consultar la tabla 'tipo_votacion' para obtener el 'cod_votacion' correspondiente al tipo
-                    $sql_tipo = "SELECT cod_votacion FROM tipo_votacion WHERE tipo_votacion = '$nom'";
+                    // Decodificar la cadena $nom
+                    $nom_decodificado = urldecode($nom);
+
+                    // Escapar la cadena decodificada para evitar inyección SQL (opcional pero recomendado)
+                    $nom_escapado = mysqli_real_escape_string($conexion, $nom_decodificado);
+
+                    // Imprimir el valor de $nom_escapado por consola
+                    echo "Valor de \$nom_escapado: " . $nom_escapado . "<br>";
+                    // Consultar los datod
+
+                    // Construir la consulta SQL con la cadena decodificada
+                    $sql_tipo = "SELECT cod_votacion FROM tipo_votacion WHERE tipo_votacion LIKE '%$nom_escapado%'";
+
                     $resultado_tipo = mysqli_query($conexion, $sql_tipo);
 
                     if ($resultado_tipo) {
@@ -81,7 +94,7 @@
                             echo "<tr>";
                             echo "<td>" . $fila['cod_candidato'] . "</td>";
                             echo "<td>" . $fila['identificacion'] . "</td>";
-                            echo "<td><img src='" . $fila['foto'] . "' width='80px' height='100px'></td>";
+                            echo "<td><img src='" . $fila['foto'] . "' width='130px' height='150px'></td>";
                             echo "<td>" . $fila['codpartido'] . "</td>";
                             echo "<td>" . $fila['tipovotacion'] . "</td>";
                             echo "<td><button class='btn btn-danger' onclick='eliminarFila(" . $fila['cod_candidato'] . ")'>Eliminar</button>";
