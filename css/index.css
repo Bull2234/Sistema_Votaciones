@@ -21,9 +21,7 @@ header{
     padding: 0 2rem;
 }
 
-
-
-.navbar{
+.navbar {
     width: 100%;
     height: 60px;
     max-width: 1200px;
@@ -38,8 +36,13 @@ header{
     gap: 2rem;
 }
 
+.imagen {
+    width: 60px;
+    height: 60px;
+}
+
 .action_login {
-    background-color: #0C8CE9;
+    background-color: burlywood;
     color: #fff;
     padding: 0.5rem 1rem;
     border: none;
@@ -47,11 +50,13 @@ header{
     border-radius: 20px;
     font-size: 0.9rem;
     cursor: pointer;
+    border: 2px solid black;
 }
 
-.action_login:hover{
+.action_login:hover {
     scale: 1.05;
     color: #fff;
+    background-color: purple;
 }
 
 .action_home {
@@ -63,106 +68,101 @@ header{
     border-radius: 20px;
     font-size: 0.9rem;
     cursor: pointer;
+    border: 2px solid black;
 }
 
 
-.action_home:hover{
+.action_home:hover {
     scale: 1.05;
+    color: #f21c1c;
+    background-color: aqua;
+}
+
+.action_nosotros {
+    background-color: #7EE687;
     color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+.action_contacto {
+    background-color: #7EE687;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: 2px solid black;
+}
+main{
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    border-radius: 20px;
 }
 
 .main_right{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    width: 50%;
-    float: right;
-    height: 90vh;
-    
-}
-.main_left{
-    width: 50%;
-    float: left;
-    height: 90vh;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    
+    flex-grow: 1;
+    display: grid;
+    place-items:  center;
+    max-width: 100%;
+    max-height: 400px;
 }
 
 .mainimg{
     max-width: 100%; /* Ancho máximo para que la imagen se ajuste dentro del div */
-    height: auto; /* Altura automática para mantener la proporción de la imagen */
-  
+    height: 260px; /* Altura automática para mantener la proporción de la imagen */
+    filter: drop-shadow(20px 10px 20px yellow); 
 }
 
 h1{
     font-weight: bolder;
     color:  #0C8CE9;
-    font-size: 70px;
+    font-size: 30px;
+    justify-content: center;
+    text-align: center;
 }
 
 p{
     color: #7EE687;
     font-size: 24px;
     font-weight: bold;
-}
-
-.botoncentro{
-   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #7EE687;
-  
+    text-align: center;
 }
 
 /* Estilos para el contenedor */
 .contenedor_btns {
     text-align: center;
-    margin-top: 50px;
 }
 
 /* Estilos para los botones */
 .boton {
     display: inline-block;
-    margin-right: 15px; /* Espacio entre los botones */
-    padding: 22px 80px;
-    color: white;
-    text-decoration: none;
-    border: none;
+    margin-right: 5px; /* Espacio entre los botones */
+    padding: 10px;
+    color: purple;
+    border: 2px solid  black;
     cursor: pointer;
     border-radius: 10px;
-}
-
-#votacion{
-    color: #fff;
     background-color: #7EE687;
 }
-
-
-#encuesta{
-    color: #fff;
+.boton:hover{
+    color: white;
     background-color: #0C8CE9;
+    text-transform: uppercase;
 }
-
-
-
-
-.responsive {
-    font-size: 2rem; /* Tamaño inicial del texto */
-    max-width: 80%; /* Ancho máximo para evitar que el texto se vuelva demasiado ancho */
-    text-align: center; /* Centrar el texto en el div */
-    max-height: 80%;
-    justify-content: left;
-  }
-
-
-.divcircle{
-    background-color: red;
-    height: 10vh;
-    
-}
-
 
 a:hover{
     color: #000;

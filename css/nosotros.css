@@ -37,9 +37,13 @@ header{
     display: flex;
     gap: 2rem;
 }
+.imagen{
+    width: 60px;
+    height: 60px;
+}
 
 .action_login {
-    background-color: #0C8CE9;
+    background-color: burlywood;
     color: #fff;
     padding: 0.5rem 1rem;
     border: none;
@@ -47,11 +51,13 @@ header{
     border-radius: 20px;
     font-size: 0.9rem;
     cursor: pointer;
+    border: 2px solid black;
 }
 
 .action_login:hover{
     scale: 1.05;
     color: #fff;
+    background-color: purple;
 }
 
 .action_home {
@@ -63,28 +69,38 @@ header{
     border-radius: 20px;
     font-size: 0.9rem;
     cursor: pointer;
+    border: 2px solid black;
 }
 
 
 .action_home:hover{
     scale: 1.05;
+    color: #f21c1c;
+    background-color: aqua;
+}
+.action_nosotros {
+    background-color: #7EE687;
     color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: 2px solid black;
+}
+.action_contacto {
+    background-color: #7EE687;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: 2px solid black;
 }
 
-
-h1{
-    font-weight: bolder;
-    color:  #fff;
-    font-size: 40px;
-    justify-content: center;
-    align-items: center;
-}
-h2 {
-    color:  #000;
-    font-size: 30px;
-    justify-content: center;
-    align-items: center;
-}
 .main{
     display: flex;
     align-items: center;
@@ -104,18 +120,6 @@ h2 {
     
 }
 
-.main2{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
-    height: 70vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    
-}
 p {
     color: #fff;
     font-size: 34px;
@@ -124,25 +128,10 @@ p {
     text-align: justify;
 }
 
-
-.responsive {
-    font-size: 2rem; /* Tamaño inicial del texto */
-    max-width: 80%; /* Ancho máximo para evitar que el texto se vuelva demasiado ancho */
-    text-align: center; /* Centrar el texto en el div */
-    max-height: 80%;
-    justify-content: left;
-  }
-
-
-
 a:hover{
     color: #000;
 }
 
-.cuerpo{
-    color: #000;
-    font-size: 20px;
-}
   
   
   
