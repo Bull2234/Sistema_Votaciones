@@ -1,7 +1,7 @@
 <?php
 include("../../php/conexion_be.php");
-function insertar($conexion)
-{
+function insertar($conexion){
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Obtener los datos enviados desde el formulario
         $idVotante = mysqli_real_escape_string($conexion, $_POST["id_votante"]); // Evita inyección SQL
@@ -24,8 +24,7 @@ function insertar($conexion)
     }
 }
 
-function boton($conexion)
-{
+function boton($conexion){
     ////obtener la validacion del botons
     if (isset($_POST['enviar'])) {
         insertar($conexion);

@@ -1,89 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-            rel="stylesheet" />
 
-        <!-- Bootstrap CSS -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-            crossorigin="anonymous" />
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-            crossorigin="anonymous"></script>
-        <!-- Favicon - FIS -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="../../css/loginn.css" />
 
-        <!-- My Styles -->
-        <link rel="stylesheet" href="../../css/loginn.css" />
+    <title>eDemocracia</title>
+</head>
 
-        <title>eDemocracia</title>
-    </head>
-
-    <body
-        transition-style="out:wipe:bottom-right"
-        style="background-color: #dbd6cf">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="">Sistema de Votaciones</a>
-        </nav>
-        <!--LOGIN-->
-
-        <div
-            class="card card-container"
-            transition-style="out:wipe:top-left"
-            style="background-color: #0000dd">
-            <img
-                id="profile-img"
-                class="profile-img-card"
-                src="../../media/login.png"
-                alt="Login Image" />
-            <p id="profile-name" class="profile-name-card"></p>
-            <form class="form-signin" action="Validar_usu.php" method="POST">
-                <span id="reauth-email" class="reauth-email"></span>
-                <input
-                    type="text"
-                    id="id"
-                    class="form-control"
-                    placeholder="Identificacion"
-                    required
-                    name="id"
-                    oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
-                <div id="remember" class="checkbox"></div>
-                <button
-                    class="btn btn-lg btn-primary btn-block btn-signin"
-                    type="submit"
-                    name="ingresar">
-                    Ingresar
-                </button>
-            </form>
-        </div>
-        <!-- /card-container -->
-
-        <!-- Footer -->
-        <footer
-            class="page-footer font-small"
-            style="background-color: #343a40; color: #fff; margin-top: 150px">
-            <!-- Copyright -->
-            <div class="footer-copyright text-center py-3">
-                © 2023 Todos los derechos reservados
-                <br />
-                <a
-                    href="https://www.udenar.edu.co/facultades/ingenieria/ingenieria-en-sistemas/"
-                    target="_blank">
-                    Facultad de Ingeniería de Sistemas
-                </a>
+<body>
+    <!--LOGIN-->
+            <nav class="navbar">
+                <h2>Sistema De Votaciones</h2>
+            </nav>
+<div class="container">
+    <div class="login-box">
+        <h2>LOGIN</h2>
+        <form action="Validar_usu.php" method="POST">
+            <div class="input-box">
+                <input type="text" id="id" placeholder="Identificacion" required name="id"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '');" maxlength="10" />
+                <label>Identificaciòn</label>
             </div>
-            <!-- Copyright -->
-        </footer>
-    </body>
+            <button type="submit" class="btn" name="ingresar">Ingresar</button>
+        </form>
+    </div>
+
+    <span style="--i:0;"></span>
+    <span style="--i:1;"></span>
+    <span style="--i:2;"></span>
+    <span style="--i:3;"></span>
+    <span style="--i:4;"></span>
+    <span style="--i:5;"></span>
+    <span style="--i:6;"></span>
+    <span style="--i:7;"></span>
+    <span style="--i:8;"></span>
+    <span style="--i:9;"></span>
+    <span style="--i:10;"></span>
+    <span style="--i:11;"></span>
+    <span style="--i:12;"></span>
+    <span style="--i:13;"></span>
+    <span style="--i:14;"></span>
+    <span style="--i:15;"></span>
+    <span style="--i:16;"></span>
+    <span style="--i:17;"></span>
+    <span style="--i:18;"></span>
+    <span style="--i:19;"></span>
+    <span style="--i:20;"></span>
+    <span style="--i:21;"></span>
+    <span style="--i:22;"></span>
+    <span style="--i:23;"></span>
+    <span style="--i:24;"></span>
+    <span style="--i:25;"></span>
+    <span style="--i:26;"></span>
+    <span style="--i:27;"></span>
+    <span style="--i:28;"></span>
+    <span style="--i:29;"></span>
+    <span style="--i:30;"></span>
+    <span style="--i:31;"></span>
+    <span style="--i:32;"></span>
+    <span style="--i:33;"></span>
+    <span style="--i:34;"></span>
+    <span style="--i:35;"></span>
+    <span style="--i:36;"></span>
+    <span style="--i:37;"></span>
+    <span style="--i:38;"></span>
+    <span style="--i:39;"></span>
+    <span style="--i:40;"></span>
+    <span style="--i:41;"></span>
+    <span style="--i:42;"></span>
+    <span style="--i:43;"></span>
+    <span style="--i:44;"></span>
+    <span style="--i:45;"></span>
+    <span style="--i:46;"></span>
+    <span style="--i:47;"></span>
+    <span style="--i:48;"></span>
+    <span style="--i:49;"></span>
+</div>
+<!-- partial -->
+
+</body>
+
 </html>

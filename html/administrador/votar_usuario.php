@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -85,36 +85,7 @@
   <script src="../../js/verificar_checkbox.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script>
-    function codcandidato() {
-      let cod = document.getElementById('id_candidato').value;
 
-      // Hacer una petición AJAX a PHP
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          // La petición ha sido completada y la respuesta está lista
-          // Aquí puedes manejar la respuesta del servidor
-          document.getElementById("nombre_candidato").value = this.responseText;
-        }
-      };
-      xhttp.open("GET", "Nombrescan.php?cod=" + cod, true);
-      xhttp.send();
-
-      // Hacer una petición AJAX para fotoscan.php
-      var xhttp2 = new XMLHttpRequest();
-      xhttp2.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          // Manejar la respuesta de fotoscan.php
-          var fotoUrl = this.responseText;
-          document.getElementById("foto_candidato").innerHTML = "<img src='" + fotoUrl +
-            "' alt='Foto del candidato' style='width: 120px; height: 150px;'>";
-        }
-      };
-      xhttp2.open("GET", "fotoscan.php?cod=" + cod, true);
-      xhttp2.send();
-    }
-  </script>
 </body>
 
 </html>

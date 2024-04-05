@@ -1,167 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
 
-@keyframes wipe-out-bottom-right {
-      from {
-        clip-path: polygon(50% -50%, 150% 50%, 50% 150%, -50% 50%);
-      }
-      to {
-        clip-path: polygon(150% 50%, 150% 50%, 50% 150%, 50% 150%);
-      }
-    }
-
-    [transition-style="out:wipe:bottom-right"]::before {
-      content: ''; /* Agrega un seudoelemento sin contenido */
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background-color: #7EE687; /* Puedes cambiar el color de fondo según lo necesites */
-      animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-out-bottom-right both;
-    }
-
-
-    @keyframes wipe-out-top-left {
-  from {
-    clip-path: polygon(-50% 0%, 200% 0, 0 200%, 0 -50%);
-  }
-  to {
-    clip-path: polygon(0 0, 0 0, 0 0, 0 50%);
-  }
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins";
+  box-sizing: border-box;
 }
 
-[transition-style="out:wipe:top-left"]::before {
-  content: ''; /* Agrega un seudoelemento sin contenido */
+body {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  background: #1f293a;
+  max-height: 100vh;
+}
+
+.container {
+  width: 260px;
+  height: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 70px 400px;
+}
+.navbar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+}
+.container span {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #7EE687; /* Puedes cambiar el color de fondo según lo necesites */
-  animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-out-top-left both;
+  left: 440PX;
+  width: 32px;
+  height: 6px;
+  background: #2c4766;
+  border-radius: 8px;
+  transform-origin: 90px;
+  transform: scale(2.2) rotate(calc(var(--i) * (360deg / 50)));
+  animation: animateBlink 3s linear infinite;
+  animation-delay: calc(var(--i) * (3s / 50));
 }
 
-/*
- * Card component
- */
- .card-container.card {
-     max-width: 350px;
-     padding: 40px 40px;
- }
+@keyframes animateBlink {
+  0% {
+    background: #0ef;
+  }
 
-.card {
-    background-color: #F7F7F7;
-    /* just in case there no content*/
-    padding: 20px 25px 30px;
-    margin: 0 auto 25px;
-    margin-top: 50px;
-    /* shadows and rounded borders */
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  25% {
+    background: #2c4766;
+  }
 }
 
-.profile-img-card {
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 10px;
-    display: block;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
+.login-box {
+  display: block;
+  justify-content: center;
+  align-items: center;
 }
 
-/*
- * Form styles
- */
-.profile-name-card {
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    margin: 10px 0 0;
-    min-height: 1em;
+.login-box form {
+  width: 100%;
+  padding: 0 50px;
 }
 
-.reauth-email {
-    display: block;
-    color: #404040;
-    line-height: 2;
-    margin-bottom: 10px;
-    font-size: 14px;
-    text-align: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+h2 {
+  font-size: 2em;
+  color: #0ef;
+  text-align: center;
 }
 
-.form-signin #inputEmail,
-.form-signin #inputPassword {
-    direction: ltr;
-    height: 44px;
-    font-size: 16px;
+.input-box {
+  position: relative;
+  margin: 25px 0;
 }
 
-.form-signin input[type=email],
-.form-signin input[type=password],
-.form-signin input[type=text],
-.form-signin button {
-    width: 100%;
-    display: block;
-    margin-bottom: 10px;
-    z-index: 1;
-    position: relative;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+.input-box input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: 2px solid #2c4766;
+  outline: none;
+  border-radius: 40px;
+  font-size: 1em;
+  color: #fff;
+  padding: 0 20px;
+  transition: 0.5s;
 }
 
-.form-signin .form-control:focus {
-    border-color: rgb(104, 145, 162);
-    outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+.input-box input:focus,
+.input-box input:valid {
+  border-color: #0ef;
 }
 
-.btn.btn-signin {
-    /*background-color: #4d90fe; */
-    background-color: rgb(104, 145, 162);
-    /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
-    padding: 0px;
-    font-weight: 700;
-    font-size: 14px;
-    height: 36px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    border: none;
-    -o-transition: all 0.218s;
-    -moz-transition: all 0.218s;
-    -webkit-transition: all 0.218s;
-    transition: all 0.218s;
-    font-family: 'Poppins', sans-serif; /* se indica el uso de Popins, un tipo de letra importada desde google fonts por el método link*/
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: #fff;
+  pointer-events: none;
+  transition: 0.5s ease;
 }
 
-.btn.btn-signin:hover,
-.btn.btn-signin:active,
-.btn.btn-signin:focus {
-    background-color:#7EE687;
+.input-box input:focus~label,
+.input-box input:valid~label {
+  top: 1px;
+  font-size: 0.8em;
+  background-color: #1f293a;
+  padding: 0 6px;
+  color: #0ef;
 }
 
-.forgot-password {
-    color: rgb(104, 145, 162);
+.btn {
+  width: 100%;
+  height: 45px;
+  border-radius: 45px;
+  background: #0ef;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1em;
+  color: #1f293a;
+  font-weight: 600;
 }
 
-.forgot-password:hover,
-.forgot-password:active,
-.forgot-password:focus{
-    color: rgb(12, 97, 33);
-}
-
-a{
-  font-family: 'Poppins', sans-serif; /* se indica el uso de Popins, un tipo de letra importada desde google fonts por el método link*/
+.btn:hover {
+  background: rgb(0, 255, 64);
+  color: white;
 }

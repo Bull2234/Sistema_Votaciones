@@ -45,7 +45,7 @@ function validar($conexion)
             echo "</tbody>";
             echo "</table>";
             echo '<div class="d-flex justify-content-center mt-3">';
-            echo '<a href="principal_usuario.php" class="btn btn-primary">Ok</a>';
+            echo '<a href="principal_usuario.php>" class="btn btn-primary">Ok</a>';
             echo '</div>';
 
             echo "</div>";
@@ -53,6 +53,14 @@ function validar($conexion)
             mysqli_close($conexion);
         } else {
             mysqli_close($conexion);
+            echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+            echo " <script>     
+            Swal.fire({
+          title: 'Oops...',
+          text: 'Numero De Documento No Valido!.',
+          icon: 'error',
+      });
+      </script>";
             header("Location: login.html");
         }
     }
