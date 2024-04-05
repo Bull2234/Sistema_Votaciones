@@ -45,7 +45,7 @@ function validar($conexion)
             echo "</tbody>";
             echo "</table>";
             echo '<div class="d-flex justify-content-center mt-3">';
-            echo '<a href="principal_usuario.php>" class="btn btn-primary">Ok</a>';
+            echo '<a href="principal_usuario.php?>" class="btn btn-primary">Ok</a>';
             echo '</div>';
 
             echo "</div>";
